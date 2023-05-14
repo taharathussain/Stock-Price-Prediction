@@ -19,7 +19,6 @@ def adfuller_test(series):
 # Convert data to Stationary
 def convert_to_stationary(df, column):
     df[f'{column} First Difference'] = df[column] - df[column].shift(1)
-    df.dropna(inplace = True)
     return df.head()
 
 

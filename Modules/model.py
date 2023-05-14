@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
 from prophet import Prophet
@@ -84,13 +83,14 @@ def lstm_model(X_train, y_train, epochs=10, batch_size=32):
     return model
 
 # Plot LSTM Results
-def plot_lstm_results(test_data, predicted_prices):
-    plt.plot(test_data['Date'], test_data['Close'], label='Actual Prices')
-    plt.plot(test_data['Date'], predicted_prices, label='Predicted Prices', linestyle='--', color='green')
-    plt.title('Stock Price Prediction using LSTM')
-    plt.xlabel('Time')
-    plt.ylabel('Stock Price')
-    plt.legend()
+def plot_lstm_results(test_data, predicted_prices, figsize=(18, 7)):
+    fig, ax = plt.subplots(figsize=figsize)
+    ax.plot(test_data['Date'], test_data['Close'], label='Actual Prices')
+    ax.plot(test_data['Date'], predicted_prices, label='Predicted Prices', linestyle='--', color='green')
+    ax.set_title('Stock Price Prediction using LSTM')
+    ax.set_xlabel('Time')
+    ax.set_ylabel('Stock Price')
+    ax.legend()
     plt.show()
 
 
